@@ -11,13 +11,14 @@ let randomQuote = () => {
   })
     .then((res) => res.json())
     .then((data) => {
-      let quotes = data.quotes;
+        generateBtn.textContent = "Loading...";
+       let quotes = data.quotes;
       let randomIndex = Math.floor(Math.random() * quotes.length);
       let quote = quotes[randomIndex];
       authorDisplay.textContent = quote.author;
       quoteDisplay.textContent = quote.quote;
+        generateBtn.textContent = "Generate New Quote";
     });
 };
 
-randomQuote();
 generateBtn.addEventListener("click", randomQuote);
